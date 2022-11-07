@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 public class Cinema {
     @TableId(type = IdType.AUTO)
     private int cinemaId;//电影院Id
-    @Size(min = 2, max = 5, message = "长度不符合要求")
+    @NotEmpty(message = "电影院名字不能为空")
     private String cinemaName;//电影院名字
 
     private boolean enableOrNot;//电影院是否可用
