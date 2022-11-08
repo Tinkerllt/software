@@ -1,3 +1,8 @@
+server:
+  port: 8080
+
+  # Redis ÅäÖÃ
+  # Redis Êý¾Ý¿âË÷Òý£¨Ä¬ÈÏÎª0£©
 spring:
   redis:
     database: 0
@@ -26,7 +31,3 @@ logging:
   level:
     root: info
     com.AdminMange.dao: debug
-
-
-server:
-  port: 8081
