@@ -51,6 +51,6 @@ public class StudentController {
     }
     @GetMapping("/get")
     public String get(HttpSession session) {
-        return session.getAttribute("user") + ":" + port;
+        return session.getAttribute("user") + ":" + port + "\nquanxian: " + session.getAttribute("quanxian");
     }
 }
