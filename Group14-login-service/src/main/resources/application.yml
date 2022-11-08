@@ -20,8 +20,8 @@ spring:
     url: jdbc:mysql://localhost:3306/hw1?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 #    url: jdbc:mysql://mysql:3306/hw1?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: 123456
-#    password: llt123456
+#    password: 123456
+    password: llt123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   sql:

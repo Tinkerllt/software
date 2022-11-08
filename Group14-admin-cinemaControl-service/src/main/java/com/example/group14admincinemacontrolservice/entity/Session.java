@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
 import java.sql.Time;
 import java.sql.Date;
 @Data
@@ -19,5 +21,6 @@ public class Session {
     private int cinemaId;//电影院ID
     private String screeningDate;//排片日期
     private String startTime;//排片时间
+    @NotEmpty(message = "放映厅名不能为空")
     private String hallName;//放映厅名字
 }
