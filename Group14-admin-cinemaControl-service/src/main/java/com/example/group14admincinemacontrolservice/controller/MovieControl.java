@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -16,15 +17,25 @@ public class MovieControl {
     @Autowired
     private MovieSevice movieSevice;
     @GetMapping("/api/v1/admin/getMovieId")
-    public List<Object> getMovieId(){
+    public List<Object> getMovieId(HttpSession session){
+        System.out.println(session.getAttribute("quanxian").toString());
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         return movieSevice.selectMovieId();
     }
     @GetMapping("/api/v1/admin/getMovieById")
-    public Movie getCinemaById(@RequestParam int movieId){
+    public Movie getCinemaById(HttpSession session,@RequestParam int movieId){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         return movieSevice.selectMovieById(movieId);
     }
     @PostMapping("/api/v1/admin/insMovie")
-    public String insertMovie(@RequestBody @Valid Movie movie, BindingResult result){
+    public String insertMovie(HttpSession session,@RequestBody @Valid Movie movie, BindingResult result){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         if(result.hasErrors()){
             return "错误提示码:"+result.getFieldError().getDefaultMessage();
         }
@@ -36,7 +47,10 @@ public class MovieControl {
 
     }
     @PutMapping("/api/v1/admin/udMovieInfo")
-    public String UpdateMovie(@RequestBody @Valid Movie movie, BindingResult result){
+    public String UpdateMovie(HttpSession session,@RequestBody @Valid Movie movie, BindingResult result){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         if(result.hasErrors()){
             return "错误提示码:"+result.getFieldError().getDefaultMessage();
         }
@@ -48,12 +62,18 @@ public class MovieControl {
 
     }
     @PutMapping("/api/v1/admin/hidMovie")
-    public String HiddenMovie(@RequestParam int movieId){
+    public String HiddenMovie(HttpSession session,@RequestParam int movieId){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         movieSevice.HiddenMovie(movieId);
         return "隐藏成功";
     }
     @DeleteMapping("/api/v1/admin/delMovie")
-    public String DeleteMovie(@RequestParam int movieId){
+    public String DeleteMovie(HttpSession session,@RequestParam int movieId){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         movieSevice.DeleteMovie(movieId);
         return "删除成功";
     }

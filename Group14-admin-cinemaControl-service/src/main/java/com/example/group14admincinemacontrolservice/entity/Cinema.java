@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
@@ -21,6 +22,7 @@ public class Cinema {
     @TableId(type = IdType.AUTO)
     private int cinemaId;//电影院Id
     @NotEmpty(message = "电影院名字不能为空")
+    @NotNull
     private String cinemaName;//电影院名字
 
     private boolean enableOrNot;//电影院是否可用

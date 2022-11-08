@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -13,16 +14,27 @@ import java.util.List;
 public class CinemaController {
     @Autowired
     private CinemaSevice cinemaSevice;
+
+
     @GetMapping("/api/v1/admin/getCinemaId")
-    public List<Object> getCinemaId(){
+    public List<Object> getCinemaId(HttpSession session){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         return cinemaSevice.selectCinemaId();
     }
     @GetMapping("/api/v1/admin/getCinemaById")
-    public Cinema getCinemaById(@RequestParam int cinemaId){
+    public Cinema getCinemaById(HttpSession session,@RequestParam int cinemaId){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         return cinemaSevice.selectCinemaById(cinemaId);
     }
     @PostMapping("/api/v1/admin/insCinema")
-    public String insertCinema(@RequestBody @Valid Cinema cinema, BindingResult result){
+    public String insertCinema(HttpSession session,@RequestBody @Valid Cinema cinema, BindingResult result){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         if(result.hasErrors()){
             return "错误提示码:"+result.getFieldError().getDefaultMessage();
         }
@@ -34,8 +46,10 @@ public class CinemaController {
 
     }
     @PutMapping("/api/v1/admin/udCinemaInfo")
-    public String updateCinema(@RequestBody @Valid Cinema cinema, BindingResult result){
-
+    public String updateCinema(HttpSession session,@RequestBody @Valid Cinema cinema, BindingResult result){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         if(result.hasErrors()){
             return "错误提示码:"+result.getFieldError().getDefaultMessage();
         }
@@ -47,7 +61,10 @@ public class CinemaController {
     }
 
     @DeleteMapping("/api/v1/admin/delCinema")
-    public String deleteCinema(@RequestParam  int cinemaId){
+    public String deleteCinema(HttpSession session,@RequestParam  int cinemaId){
+        if(!session.getAttribute("quanxian").toString().equals("1")){
+            return null;
+        }
         cinemaSevice.deleteCinema(cinemaId);
         return "删除成功";
     }
