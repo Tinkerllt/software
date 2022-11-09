@@ -26,6 +26,16 @@ services:
       MYSQL_PASSWORD: llt123456
       MYSQL_DB: hw1
 
+  Group-14-admin-cinemaControl-service:
+    image: llt/group14admincinemacontrolservice
+    ports:
+      - "8082:8082"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: llt123456
+      MYSQL_DB: hw1
+
   mysql:
     image: mysql:5.7
     volumes:
