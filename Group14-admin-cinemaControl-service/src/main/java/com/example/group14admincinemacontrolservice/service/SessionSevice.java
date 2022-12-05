@@ -27,9 +27,6 @@ public class SessionSevice {
             date = format.parse(s);
             releaseDate=format.parse(movie.getReleaseDate());
             endDate=format.parse(movie.getEndDate());
-            System.out.println(date);
-            System.out.println(releaseDate);
-            System.out.println(endDate);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         }

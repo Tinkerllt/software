@@ -21,5 +21,4 @@ public class CinemaController {
         System.out.println(CityName);
         return cinemaService.showall(CityName);
     }
-
 }

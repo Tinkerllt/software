@@ -32,7 +32,6 @@ public class CinemaController {
     }
     @PostMapping("/api/v1/admin/insCinema")
     public String insertCinema(HttpSession session,@RequestBody @Valid Cinema cinema, BindingResult result){
-        System.out.println("1");
         if(!session.getAttribute("quanxian").toString().equals("1")){
             return "用户权限不足";
         }
