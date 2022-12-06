@@ -1,5 +1,0 @@
-FROM openjdk:17-jdk-alpine
-
-ADD target/Group14-login-service-0.0.1-SNAPSHOT.jar /app/
-CMD ["java", "-jar", "-DREDIS_HOST=redis", "-DMYSQL_HOST=mysql", "/app/Group14-login-service-0.0.1-SNAPSHOT.jar"]
-EXPOSE 8080

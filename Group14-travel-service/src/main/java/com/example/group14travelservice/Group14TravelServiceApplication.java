@@ -8,9 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.example.group14travelservice.dao")
 public class Group14TravelServiceApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(Group14TravelServiceApplication.class, args);
     }
-
 }
