@@ -15,10 +15,10 @@ dubbo:
     address: zookeeper://127.0.0.1:2181
   protocol:
     name: dubbo
-    port: 20885
+    port: 20883
 logging:
   level:
     root: info
     com.AdminMange.dao: debug
 server:
-  port: 7000
+  port: 7002

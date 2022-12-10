@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/account?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/order?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: llt123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,13 +10,12 @@ spring:
         mode: always
 dubbo:
   application:
-    name: Group14-account-service
+    name: Group14-order-service
   registry:
-    address: zookeeper://localhost:2181
-
+    address: zookeeper://127.0.0.1:2181
   protocol:
     name: dubbo
-    port: 20882
+    port: 20884
 logging:
   level:
     root: info
@@ -25,4 +24,4 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
-  port: 7001
+  port: 7003
