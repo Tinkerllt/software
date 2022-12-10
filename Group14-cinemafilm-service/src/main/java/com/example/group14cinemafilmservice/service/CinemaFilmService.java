@@ -54,4 +54,13 @@ public class CinemaFilmService {
             return false;
         }
     }
+    public boolean DeleteFilm(int filmId) {
+        Map<String, Object> columnMap = new HashMap<String, Object>();
+        columnMap.put("film_id", filmId);
+        if (cinemaFilmDao.deleteByMap(columnMap) == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

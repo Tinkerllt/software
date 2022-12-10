@@ -42,5 +42,11 @@ public class CinemaFilmController {
         }
         else return ResponseEnitity.success(cinemaId);
     }
-
+    @PostMapping("/api/v1/order/deleteFilm")
+    public ResponseEnitity<List<Integer>> deleteFilm(@RequestParam int filmId){
+        if (!cinemaFilmService.DeleteFilm(filmId)) {
+            return ResponseEnitity.error(101,"删除失败");
+        }
+        else return ResponseEnitity.success(filmId);
+    }
 }
