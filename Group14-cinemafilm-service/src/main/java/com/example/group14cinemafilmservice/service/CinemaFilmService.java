@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CinemaFilmService {
@@ -36,5 +38,20 @@ public class CinemaFilmService {
             cinemaList.add(list.get(i).getCinemaId());
         }
         return cinemaList;
+    }
+
+    public boolean InsertCinemaFilm(CinemaFilm cinemaFilm) {
+        cinemaFilmDao.insert(cinemaFilm);
+        return true;
+    }
+
+    public boolean DeleteCinema(int cinemaId) {
+        Map<String, Object> columnMap = new HashMap<String, Object>();
+        columnMap.put("cinema_id", cinemaId);
+        if (cinemaFilmDao.deleteByMap(columnMap) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -1,11 +1,10 @@
 package com.example.group14cinemafilmservice.controller;
 
+import com.example.group14cinemafilmservice.entity.CinemaFilm;
 import com.example.group14cinemafilmservice.response.ResponseEnitity;
 import com.example.group14cinemafilmservice.service.CinemaFilmService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,4 +28,19 @@ public class CinemaFilmController {
         }
         else return ResponseEnitity.success(cinemaList);
     }
+    @PostMapping("/api/v1/order/insertCinemaFilm")
+    public ResponseEnitity<List<Integer>> insertCinemaFilm(@RequestBody CinemaFilm cinemaFilm){
+        if (!cinemaFilmService.InsertCinemaFilm(cinemaFilm)) {
+            return ResponseEnitity.error(101,"插入失败");
+        }
+        else return ResponseEnitity.success(cinemaFilm);
+    }
+    @PostMapping("/api/v1/order/deleteCinema")
+    public ResponseEnitity<List<Integer>> deleteCinema(@RequestParam int cinemaId){
+        if (!cinemaFilmService.DeleteCinema(cinemaId)) {
+            return ResponseEnitity.error(101,"删除失败");
+        }
+        else return ResponseEnitity.success(cinemaId);
+    }
+
 }
