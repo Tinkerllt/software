@@ -5,6 +5,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>Group14-hall-service</module>
+        <module>Group14-dubbo-api</module>
+        <module>Group14-user-service</module>
+        <module>Group14-account-service</module>
+        <module>Group14-order-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -39,16 +43,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- maven 编译插件 -->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <version>${maven.compiler.plugin.version}</version>-->
-<!--                <configuration>-->
-<!--                    <source>${java.version}</source>-->
-<!--                    <target>${java.version}</target>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>

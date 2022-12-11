@@ -7,11 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class Group14AccountServiceApplicationTests {
-    @Autowired
-    private AccountService accountService;
+
     @Test
     void contextLoads() {
-        accountService.getMoney("llt1");
+
     }
 
 }
